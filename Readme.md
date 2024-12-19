@@ -1,9 +1,9 @@
 # AltController Library
 
-Provides a simple wrapper for the Arduino Keyboard library to combine simple keypresses, macros, and writing text.
-Created for Physical Computing Project 1
+Arduino library for creating custom keyboard controllers. Build custom shortcut panels, gaming controllers, or macro boards using simple buttons with internal pullup resistors.
 
-## Basic Usage
+
+## Quick Start
 
 ```cpp
 #include <AltController.h>
@@ -11,11 +11,17 @@ Created for Physical Computing Project 1
 AltController controller;
 
 void setup() {
-    // Create different types of key actions
-    controller.addKeyPress(2, 'a', 50);                    // Hold 'a' while pressed
-    controller.addKeyRelease(3, 'b', 90);                  // Single press 'b'
-    controller.addMacro(4, {KEY_LEFT_CTRL, 'c'}, 100);    // Ctrl+C combination
-    controller.addPrint(5, "Hello\n", 150);               // Type "Hello" + Enter
+    // Gaming key (hold to use)
+    controller.addKeyPress(2, 'w', 50);
+    
+    // Action key (single press)
+    controller.addKeyRelease(3, KEY_RETURN, 100);
+    
+    // Shortcut (key combination)
+    controller.addMacro(4, {KEY_LEFT_CTRL, 'c'}, 100);
+    
+    // Text entry
+    controller.addPrint(5, "Hello World\n", 150);
 }
 
 void loop() {
@@ -25,107 +31,115 @@ void loop() {
 
 ## Core Functions
 
-- `addKeyPress(pin, key, sensitivity)`: Key remains pressed while button is held
-- `addKeyRelease(pin, key, sensitivity)`: Single key press per button press
-- `addMacro(pin, {keys}, sensitivity)`: Key combination (e.g., Ctrl+C)
-- `addPrint(pin, text, sensitivity)`: Types the specified text string
-- `update()`: Must be called in loop() to process all buttons
+### addKeyPress(pin, key, sensitivity)
+Holds down a key while the button is pressed.
 
-## Examples
+```cpp
+// Gaming movement
+controller.addKeyPress(2, 'w', 50);  // Forward movement
+controller.addKeyPress(3, KEY_LEFT_SHIFT, 50);  // Sprint modifier
+controller.addKeyPress(4, KEY_DOWN_ARROW, 25);  // Quick scroll
+```
 
-### 1. Controller
-A gamepad-style controller with:
-- WASD keys
-- Arrow keys
-- Spacebar
-- Enter key
+### addKeyRelease(pin, key, sensitivity)
+Single key press per button press. Won't repeat until released.
 
-### 2. CopyPaste
-Text editing shortcuts:
-- Select All (Ctrl+A)
-- Copy (Ctrl+C)
-- Paste (Ctrl+V)
-- Paste in Place (Shift+Insert)
-- Navigation keys (Enter, Tab, Backspace, Space)
+```cpp
+// Menu navigation
+controller.addKeyRelease(5, ' ', 90);  // Jump/Select
+controller.addKeyRelease(6, KEY_RETURN, 100);  // Confirm
+controller.addKeyRelease(7, KEY_TAB, 75);  // Next field
+```
 
-### 3. WebControl
-Web browser control with:
-- Tab management (Next, Previous, New)
-- Navigation (Arrows, Page Up/Down)
-- Quick URL access
-- Basic controls (Enter, Space)
+### addMacro(pin, {keys}, sensitivity)
+Execute key combinations.
 
-### 4. Photoshop
-Cross-platform Photoshop launcher:
-- Windows/Mac search
-- Application launch
-- New document creation
+```cpp
+// Cross-platform shortcuts
+controller.addMacro(8, {KEY_LEFT_CTRL, 'c'}, 100);  // Windows Copy
+controller.addMacro(9, {KEY_LEFT_GUI, 'v'}, 100);   // Mac Paste
+controller.addMacro(10, {KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 't'}, 100);  // Reopen tab
+```
+
+### addPrint(pin, text, sensitivity)
+Type specified text strings.
+
+```cpp
+// Quick text entry
+controller.addPrint(11, "user@email.com", 150);
+controller.addPrint(12, "https://arduino.cc\n", 150);
+controller.addPrint(13, "Thank you!\n", 150);
+```
+
+## Example Projects
+
+### 1. Gaming Controller
+```cpp
+// WASD + Arrow keys + Space + Enter
+controller.addKeyPress(2, 'w', 25);           // Forward
+controller.addKeyPress(3, 'a', 25);           // Left
+controller.addKeyPress(4, 's', 25);           // Back
+controller.addKeyPress(5, 'd', 25);           // Right
+controller.addKeyPress(6, KEY_UP_ARROW, 25);  // Camera up
+...
+```
+
+### 2. Copy/Paste Panel (Cross-Platform)
+```cpp
+// Windows shortcuts
+controller.addMacro(2, {KEY_LEFT_CTRL, 'a'}, 100);  // Select All
+controller.addMacro(3, {KEY_LEFT_CTRL, 'c'}, 100);  // Copy
+controller.addMacro(4, {KEY_LEFT_CTRL, 'v'}, 100);  // Paste
+
+// Mac shortcuts
+controller.addMacro(5, {KEY_LEFT_GUI, 'a'}, 100);   // Select All
+controller.addMacro(6, {KEY_LEFT_GUI, 'c'}, 100);   // Copy
+controller.addMacro(7, {KEY_LEFT_GUI, 'v'}, 100);   // Paste
+```
+
+### 3. Web Browser Control
+```cpp
+// Tab management
+controller.addMacro(2, {KEY_LEFT_CTRL, KEY_TAB}, 100);  // Next tab (Windows)
+controller.addMacro(3, {KEY_LEFT_GUI, KEY_TAB}, 100);   // Next tab (Mac)
+controller.addPrint(4, "https://arduino.cc\n", 150);    // Quick URL
+```
+
+### 4. Photoshop Shortcuts
+```cpp
+// Launch and new document
+controller.addMacro(2, {KEY_LEFT_GUI, ' '}, 100);    // Mac Spotlight
+controller.addPrint(3, "photoshop\n", 150);          // Type app name
+controller.addMacro(4, {KEY_LEFT_CTRL, 'n'}, 100);   // New doc (Windows)
+controller.addMacro(5, {KEY_LEFT_GUI, 'n'}, 100);    // New doc (Mac)
+```
 
 ## Key Reference
 
 ### Modifier Keys
-| Key | Description |
-|-----|-------------|
-| KEY_LEFT_CTRL  | Left Control |
-| KEY_LEFT_SHIFT | Left Shift |
-| KEY_LEFT_ALT   | Left Alt (Option on Mac) |
-| KEY_LEFT_GUI   | Windows/Command key |
-| KEY_RIGHT_CTRL | Right Control |
-| KEY_RIGHT_SHIFT| Right Shift |
-| KEY_RIGHT_ALT  | Right Alt (AltGr/Option) |
-| KEY_RIGHT_GUI  | Windows/Command key |
+| Windows | Mac | Key Code |
+|---------|-----|----------|
+| Ctrl | Command | KEY_LEFT_CTRL / KEY_LEFT_GUI |
+| Shift | Shift | KEY_LEFT_SHIFT |
+| Alt | Option | KEY_LEFT_ALT |
+| Win | Command | KEY_LEFT_GUI |
 
-### Special Keys
-| Key | Description |
-|-----|-------------|
-| KEY_TAB        | Tab |
-| KEY_CAPS_LOCK  | Caps Lock |
-| KEY_BACKSPACE  | Backspace |
-| KEY_RETURN     | Enter/Return |
-| KEY_MENU       | Menu |
-| KEY_INSERT     | Insert |
-| KEY_DELETE     | Delete |
-| KEY_HOME       | Home |
-| KEY_END        | End |
-| KEY_PAGE_UP    | Page Up |
-| KEY_PAGE_DOWN  | Page Down |
+### Navigation Keys
+| Key | Code |
+|-----|------|
+| Arrow Keys | KEY_UP_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_RIGHT_ARROW |
+| Page Control | KEY_PAGE_UP, KEY_PAGE_DOWN, KEY_HOME, KEY_END |
+| Editing | KEY_BACKSPACE, KEY_DELETE, KEY_INSERT, KEY_TAB, KEY_RETURN |
+| Function | KEY_F1 through KEY_F24 |
 
-### Arrow Keys
-| Key | Description |
-|-----|-------------|
-| KEY_UP_ARROW    | Up Arrow |
-| KEY_DOWN_ARROW  | Down Arrow |
-| KEY_LEFT_ARROW  | Left Arrow |
-| KEY_RIGHT_ARROW | Right Arrow |
+## Timing Guidelines
+- 25-50ms: Fast response (gaming)
+- 75-100ms: Standard (shortcuts)
+- 150ms+: Text entry
 
-### Function Keys
-| Key Range | Description |
-|-----------|-------------|
-| KEY_F1 through KEY_F12  | Standard Function Keys |
-| KEY_F13 through KEY_F24 | Extended Function Keys |
-
-### Control Keys
-| Key | Description |
-|-----|-------------|
-| KEY_PRINT_SCREEN | Print Screen/SysRq |
-| KEY_SCROLL_LOCK  | Scroll Lock |
-| KEY_PAUSE        | Pause/Break |
-
-### Numeric Keypad
-| Key | Description |
-|-----|-------------|
-| KEY_NUM_LOCK    | Num Lock |
-| KEY_KP_SLASH    | Keypad / |
-| KEY_KP_ASTERISK | Keypad * |
-| KEY_KP_MINUS    | Keypad - |
-| KEY_KP_PLUS     | Keypad + |
-| KEY_KP_ENTER    | Keypad Enter |
-| KEY_KP_0 to KEY_KP_9 | Keypad Numbers |
-| KEY_KP_DOT      | Keypad . |
-
-
-
-## License
-
-This library is released under the [MIT License](LICENSE).
+## Hardware Setup
+- MAKE A BUTTON between pins and ground
+- Uses internal pullup resistors
+- No external resistors needed
+- Compatible with most momentary switches
 

@@ -62,12 +62,12 @@ AltController controller;
 void setup() {
     // Windows tab management macros
     controller.addMacro(WIN_NEXT_TAB_PIN, {KEY_LEFT_CTRL, KEY_TAB}, MACRO_TIME);               // Windows next tab
-    controller.addMacro(WIN_NEW_TAB_PIN, {KEY_LEFT_CTRL, 'n'}, MACRO_TIME);                    // Windows new tab
+    controller.addMacro(WIN_NEW_TAB_PIN, {KEY_LEFT_CTRL, 't'}, MACRO_TIME);                    // Windows new tab
     controller.addMacro(WIN_PREV_TAB_PIN, {KEY_LEFT_CTRL, KEY_LEFT_SHIFT, KEY_TAB}, MACRO_TIME); // Windows prev tab
     
     // Mac tab management macros
     controller.addMacro(MAC_NEXT_TAB_PIN, {KEY_LEFT_GUI, KEY_TAB}, MACRO_TIME);                // Mac next tab
-    controller.addMacro(MAC_NEW_TAB_PIN, {KEY_LEFT_GUI, 'n'}, MACRO_TIME);                     // Mac new tab
+    controller.addMacro(MAC_NEW_TAB_PIN, {KEY_LEFT_GUI, 't'}, MACRO_TIME);                     // Mac new tab
     controller.addMacro(MAC_PREV_TAB_PIN, {KEY_LEFT_GUI, KEY_LEFT_SHIFT, KEY_TAB}, MACRO_TIME);  // Mac prev tab
     
     // Navigation keys (same for both platforms)
