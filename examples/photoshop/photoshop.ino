@@ -6,7 +6,8 @@
   - Mac Spotlight (Command + Space) on pin 3
   - Enter key on pin 4
   - Type 'photoshop' on pin 5
-  - New Document (Ctrl+N) on pin 6
+  - New Document Windows (Ctrl+N) on pin 6
+  - New Document Mac (Cmd+N) on pin 7
   
   Note: Windows key is KEY_LEFT_GUI
         Mac Command key is also KEY_LEFT_GUI
@@ -23,7 +24,8 @@ const int WIN_SEARCH_PIN = 2;
 const int MAC_SPOTLIGHT_PIN = 3;
 const int ENTER_PIN = 4;
 const int TYPE_PS_PIN = 5;
-const int NEW_DOC_PIN = 6;
+const int WIN_NEW_DOC_PIN = 6;
+const int MAC_NEW_DOC_PIN = 7;
 
 // Timing configuration (in milliseconds)
 const int MACRO_TIME = 100;    // For key combinations
@@ -45,8 +47,9 @@ void setup() {
     // Type "photoshop"
     controller.addPrint(TYPE_PS_PIN, "photoshop", TYPE_TIME);
     
-    // New Document shortcut
-    controller.addMacro(NEW_DOC_PIN, {KEY_LEFT_CTRL, 'n'}, MACRO_TIME);
+    // New Document shortcuts for both platforms
+    controller.addMacro(WIN_NEW_DOC_PIN, {KEY_LEFT_CTRL, 'n'}, MACRO_TIME);  // Windows: Ctrl+N
+    controller.addMacro(MAC_NEW_DOC_PIN, {KEY_LEFT_GUI, 'n'}, MACRO_TIME);   // Mac: Cmd+N
 }
 
 void loop() {
@@ -59,12 +62,11 @@ void loop() {
    1. Press Windows key (pin 2)
    2. Press Type PS (pin 5)
    3. Press Enter (pin 4)
+   4. New Doc: Press pin 6 (Ctrl+N)
 
    For Mac:
    1. Press Mac Spotlight (pin 3)
    2. Press Type PS (pin 5)
    3. Press Enter (pin 4)
-
-   After Photoshop opens:
-   - Press New Doc (pin 6) to create new document
+   4. New Doc: Press pin 7 (Cmd+N)
 */
