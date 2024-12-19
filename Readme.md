@@ -35,20 +35,20 @@ void loop() {
 Holds down a key while the button is pressed.
 
 ```cpp
-// Gaming movement
-controller.addKeyPress(2, 'w', 50);  // Forward movement
-controller.addKeyPress(3, KEY_LEFT_SHIFT, 50);  // Sprint modifier
-controller.addKeyPress(4, KEY_DOWN_ARROW, 25);  // Quick scroll
+//These execute continuously, useful for game controls and movement
+controller.addKeyPress(2, 'w', 50);  // w key attached to pin 2 with sensitivity of 50
+controller.addKeyPress(3, KEY_LEFT_SHIFT, 50);  // SHIFT key attached to pin 3 with sensitivity of 50
+controller.addKeyPress(4, KEY_DOWN_ARROW, 25);  // DOWN Arrow attached to pin 4 with sensitivity of 25
 ```
 
 ### addKeyRelease(pin, key, sensitivity)
 Single key press per button press. Won't repeat until released.
 
 ```cpp
-// Menu navigation
-controller.addKeyRelease(5, ' ', 90);  // Jump/Select
-controller.addKeyRelease(6, KEY_RETURN, 100);  // Confirm
-controller.addKeyRelease(7, KEY_TAB, 75);  // Next field
+// Execute once, better for exectuting the key singularly
+controller.addKeyRelease(5, ' ', 90);  // Spacebar attached to pin 5 with sensitivity of 90
+controller.addKeyRelease(6, KEY_RETURN, 100);  // ENTER attached to pin 6 with sensitivity of 100
+controller.addKeyRelease(7, KEY_TAB, 75);  // TAB attached to pin 7 with sensitivity of 90
 ```
 
 ### addMacro(pin, {keys}, sensitivity)
@@ -56,9 +56,9 @@ Execute key combinations.
 
 ```cpp
 // Cross-platform shortcuts
-controller.addMacro(8, {KEY_LEFT_CTRL, 'c'}, 100);  // Windows Copy
-controller.addMacro(9, {KEY_LEFT_GUI, 'v'}, 100);   // Mac Paste
-controller.addMacro(10, {KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 't'}, 100);  // Reopen tab
+controller.addMacro(8, {KEY_LEFT_CTRL, 'c'}, 100);  // Windows Copy attached to pin 8 with sensitivity of 100
+controller.addMacro(9, {KEY_LEFT_GUI, 'v'}, 100);   // Mac Paste attached to pin 9 with sensitivity of 100
+controller.addMacro(10, {KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 't'}, 100);  // Reopen tab attached to pin 10 with sensitivity of 100
 ```
 
 ### addPrint(pin, text, sensitivity)
@@ -66,9 +66,9 @@ Type specified text strings.
 
 ```cpp
 // Quick text entry
-controller.addPrint(11, "user@email.com", 150);
-controller.addPrint(12, "https://arduino.cc\n", 150);
-controller.addPrint(13, "Thank you!\n", 150);
+controller.addPrint(11, "user@email.com", 150);  // Email address attached to pin 11 with sensitivity of 150
+controller.addPrint(12, "https://arduino.cc\n", 150);  // URL attached to pin 12 with sensitivity of 150
+controller.addPrint(13, "Thank you!\n", 150);  // Thank you message attached to pin 13 with sensitivity of 150
 ```
 
 ## Example Projects
