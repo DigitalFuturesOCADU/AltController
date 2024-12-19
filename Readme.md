@@ -3,7 +3,7 @@
 Arduino library for creating custom keyboard controllers. Build custom shortcut panels, gaming controllers, or macro boards using simple buttons with internal pullup resistors.
 
 
-## Quick Start
+## Basic Usage
 
 ```cpp
 #include <AltController.h>
@@ -117,20 +117,64 @@ controller.addMacro(5, {KEY_LEFT_GUI, 'n'}, 100);    // New doc (Mac)
 ## Key Reference
 
 ### Modifier Keys
-| Windows | Mac | Key Code |
-|---------|-----|----------|
-| Ctrl | Command | KEY_LEFT_CTRL / KEY_LEFT_GUI |
-| Shift | Shift | KEY_LEFT_SHIFT |
-| Alt | Option | KEY_LEFT_ALT |
-| Win | Command | KEY_LEFT_GUI |
+| Key | Description |
+|-----|-------------|
+| KEY_LEFT_CTRL  | Left Control |
+| KEY_LEFT_SHIFT | Left Shift |
+| KEY_LEFT_ALT   | Left Alt (Option on Mac) |
+| KEY_LEFT_GUI   | Windows/Command key |
+| KEY_RIGHT_CTRL | Right Control |
+| KEY_RIGHT_SHIFT| Right Shift |
+| KEY_RIGHT_ALT  | Right Alt (AltGr/Option) |
+| KEY_RIGHT_GUI  | Windows/Command key |
 
-### Navigation Keys
-| Key | Code |
-|-----|------|
-| Arrow Keys | KEY_UP_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_RIGHT_ARROW |
-| Page Control | KEY_PAGE_UP, KEY_PAGE_DOWN, KEY_HOME, KEY_END |
-| Editing | KEY_BACKSPACE, KEY_DELETE, KEY_INSERT, KEY_TAB, KEY_RETURN |
-| Function | KEY_F1 through KEY_F24 |
+### Special Keys
+| Key | Description |
+|-----|-------------|
+| KEY_TAB        | Tab |
+| KEY_CAPS_LOCK  | Caps Lock |
+| KEY_BACKSPACE  | Backspace |
+| KEY_RETURN     | Enter/Return |
+| KEY_MENU       | Menu |
+| KEY_INSERT     | Insert |
+| KEY_DELETE     | Delete |
+| KEY_HOME       | Home |
+| KEY_END        | End |
+| KEY_PAGE_UP    | Page Up |
+| KEY_PAGE_DOWN  | Page Down |
+
+### Arrow Keys
+| Key | Description |
+|-----|-------------|
+| KEY_UP_ARROW    | Up Arrow |
+| KEY_DOWN_ARROW  | Down Arrow |
+| KEY_LEFT_ARROW  | Left Arrow |
+| KEY_RIGHT_ARROW | Right Arrow |
+
+### Function Keys
+| Key Range | Description |
+|-----------|-------------|
+| KEY_F1 through KEY_F12  | Standard Function Keys |
+| KEY_F13 through KEY_F24 | Extended Function Keys |
+
+### Control Keys
+| Key | Description |
+|-----|-------------|
+| KEY_PRINT_SCREEN | Print Screen/SysRq |
+| KEY_SCROLL_LOCK  | Scroll Lock |
+| KEY_PAUSE        | Pause/Break |
+
+### Numeric Keypad
+| Key | Description |
+|-----|-------------|
+| KEY_NUM_LOCK    | Num Lock |
+| KEY_KP_SLASH    | Keypad / |
+| KEY_KP_ASTERISK | Keypad * |
+| KEY_KP_MINUS    | Keypad - |
+| KEY_KP_PLUS     | Keypad + |
+| KEY_KP_ENTER    | Keypad Enter |
+| KEY_KP_0 to KEY_KP_9 | Keypad Numbers |
+| KEY_KP_DOT      | Keypad . |
 
 ## Timing Guidelines
 - 25-50ms: Fast response (gaming)
