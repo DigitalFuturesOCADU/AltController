@@ -1,0 +1,16 @@
+# Syntax Coloring Map for AltController
+
+# Classes (KEYWORD1)
+AltController	KEYWORD1
+
+# Methods (KEYWORD2)
+addKeyPress	KEYWORD2
+addKeyRelease	KEYWORD2
+addMacro	KEYWORD2
+addPrint	KEYWORD2
+update	KEYWORD2
+
+# Constants (LITERAL1)
+MAX_ACTIONS	LITERAL1
+MAX_MACRO_KEYS	LITERAL1
+MAX_PRINT_LENGTH	LITERAL1
