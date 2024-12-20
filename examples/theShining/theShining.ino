@@ -25,7 +25,7 @@ const int MESSAGE_PIN = 6;
 // Timing configuration (in milliseconds)
 const int MACRO_TIME = 100;    // For key combinations
 const int KEY_TIME = 50;       // For single keys
-const int TYPE_TIME = 150;     // For text typing
+const int TYPE_TIME = 200;     // For text typing
 
 AltController controller;
 

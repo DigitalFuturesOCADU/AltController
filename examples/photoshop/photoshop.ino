@@ -30,7 +30,7 @@ const int MAC_NEW_DOC_PIN = 7;
 // Timing configuration (in milliseconds)
 const int MACRO_TIME = 100;    // For key combinations
 const int KEY_TIME = 50;       // For single keys
-const int TYPE_TIME = 150;     // For text typing
+const int TYPE_TIME = 200;     // For text typing
 
 AltController controller;
 
@@ -45,7 +45,7 @@ void setup() {
     controller.addKeyRelease(ENTER_PIN, KEY_RETURN, KEY_TIME);
     
     // Type "photoshop"
-    controller.addPrint(TYPE_PS_PIN, "photoshop", TYPE_TIME);
+    controller.addPrint(TYPE_PS_PIN, "photoshop\n", TYPE_TIME);
     
     // New Document shortcuts for both platforms
     controller.addMacro(WIN_NEW_DOC_PIN, {KEY_LEFT_CTRL, 'n'}, MACRO_TIME);  // Windows: Ctrl+N

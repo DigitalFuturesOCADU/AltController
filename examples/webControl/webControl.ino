@@ -55,7 +55,7 @@ const int URL2_PIN = A1;
 // Timing configuration (in milliseconds)
 const int MACRO_TIME = 100;    // For key combinations
 const int KEY_TIME = 50;       // For single keys
-const int PRINT_TIME = 150;    // For URL printing
+const int PRINT_TIME = 250;    // For URL printing
 
 AltController controller;
 
@@ -66,9 +66,9 @@ void setup() {
     controller.addMacro(WIN_PREV_TAB_PIN, {KEY_LEFT_CTRL, KEY_LEFT_SHIFT, KEY_TAB}, MACRO_TIME); // Windows prev tab
     
     // Mac tab management macros
-    controller.addMacro(MAC_NEXT_TAB_PIN, {KEY_LEFT_GUI, KEY_TAB}, MACRO_TIME);                // Mac next tab
+    controller.addMacro(MAC_NEXT_TAB_PIN, {KEY_LEFT_GUI, KEY_LEFT_ALT, KEY_RIGHT_ARROW}, MACRO_TIME);                // Mac next tab
     controller.addMacro(MAC_NEW_TAB_PIN, {KEY_LEFT_GUI, 't'}, MACRO_TIME);                     // Mac new tab
-    controller.addMacro(MAC_PREV_TAB_PIN, {KEY_LEFT_GUI, KEY_LEFT_SHIFT, KEY_TAB}, MACRO_TIME);  // Mac prev tab
+    controller.addMacro(MAC_PREV_TAB_PIN, {KEY_LEFT_GUI, KEY_LEFT_ALT, KEY_LEFT_ARROW}, MACRO_TIME);  // Mac prev tab
     
     // Navigation keys (same for both platforms)
     controller.addKeyRelease(ENTER_PIN, KEY_RETURN, KEY_TIME);
@@ -97,9 +97,9 @@ void loop() {
 
    For Mac:
    Use pins 5-7 for tab management:
-   - Pin 5: Next Tab (Cmd+Tab)
+   - Pin 5: Next Tab (Cmd+Option+right arrow)
    - Pin 6: New Tab (Cmd+N)
-   - Pin 7: Previous Tab (Cmd+Shift+Tab)
+   - Pin 7: Previous Tab (Cmd+Option+left arrow)
 
    Common Controls (Both Platforms):
    - Pin 8: Enter
