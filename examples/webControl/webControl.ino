@@ -4,26 +4,26 @@
   Cross-platform web browser controller with Windows/Mac support:
   
   Windows Controls:
-  - Next Tab (Ctrl+Tab) on pin 2
-  - New Tab (Ctrl+N) on pin 3
-  - Previous Tab (Ctrl+Shift+Tab) on pin 4
+  - New Tab (Ctrl+Tab) on pin 0
+  - New Window (Ctrl+N) on pin 1
+  - Previous Tab (Ctrl+Shift+Tab) on pin 2
   
   Mac Controls:
-  - Next Tab (Cmd+Tab) on pin 5
-  - New Tab (Cmd+N) on pin 6
-  - Previous Tab (Cmd+Shift+Tab) on pin 7
+  - New Tab (Cmd+Tab) on pin 3
+  - New Window (Cmd+N) on pin 4
+  - Previous Tab (Cmd+Shift+Tab) on pin 5
   
   Navigation (Both Platforms):
-  - Enter on pin 8
-  - Spacebar on pin 9
-  - Down Arrow on pin 10
-  - Up Arrow on pin 11
-  - Page Down on pin 12
-  - Page Up on pin 13
+  - Enter on pin 6
+  - Spacebar on pin 7
+  - Down Arrow on pin 8
+  - Up Arrow on pin 9
+  - Page Down on pin 10
+  - Page Up on pin 11
   
-  Quick URLs:
-  - https://df.show on pin A0
-  - https://ocadu.ca on pin A1
+  Quick URL:
+  
+  - https://ocadu.ca on pin 12
   
   Connection:
   - Connect buttons between the specified pins and ground
@@ -33,29 +33,29 @@
 #include <AltController.h>
 
 // Windows pin assignments
-const int WIN_NEXT_TAB_PIN = 2;
-const int WIN_NEW_TAB_PIN = 3;
-const int WIN_PREV_TAB_PIN = 4;
+int WIN_NEXT_TAB_PIN = 0;
+int WIN_NEW_TAB_PIN = 1;
+int WIN_PREV_TAB_PIN = 2;
 
 // Mac pin assignments
-const int MAC_NEXT_TAB_PIN = 5;
-const int MAC_NEW_TAB_PIN = 6;
-const int MAC_PREV_TAB_PIN = 7;
+int MAC_NEXT_TAB_PIN = 3;
+int MAC_NEW_TAB_PIN = 4;
+int MAC_PREV_TAB_PIN = 5;
 
 // Common navigation pins
-const int ENTER_PIN = 8;
-const int SPACE_PIN = 9;
-const int DOWN_PIN = 10;
-const int UP_PIN = 11;
-const int PGDOWN_PIN = 12;
-const int PGUP_PIN = 13;
-const int URL1_PIN = A0;
-const int URL2_PIN = A1;
+int ENTER_PIN = 6;
+int SPACE_PIN = 7;
+int DOWN_PIN = 8;
+int UP_PIN = 9;
+int PGDOWN_PIN = 10;
+int PGUP_PIN = 11;
+
+int URL_PIN = 12;
 
 // Timing configuration (in milliseconds)
-const int MACRO_TIME = 100;    // For key combinations
-const int KEY_TIME = 50;       // For single keys
-const int PRINT_TIME = 250;    // For URL printing
+int MACRO_TIME = 100;    // For key combinations
+int KEY_TIME = 50;       // For single keys
+int PRINT_TIME = 250;    // For URL printing
 
 AltController controller;
 
@@ -79,35 +79,11 @@ void setup() {
     controller.addKeyRelease(PGUP_PIN, KEY_PAGE_UP, KEY_TIME);
     
     // URL shortcuts (same for both platforms)
-    controller.addPrint(URL1_PIN, "https://df.show\n", PRINT_TIME);     // \n adds Enter key press
-    controller.addPrint(URL2_PIN, "https://ocadu.ca\n", PRINT_TIME);    // \n adds Enter key press
+    
+    controller.addPrint(URL_PIN, "https://ocadu.ca\n", PRINT_TIME);    // \n adds Enter key press
 }
 
 void loop() {
     controller.update();
 }
 
-/* Usage Instructions:
-
-   For Windows:
-   Use pins 2-4 for tab management:
-   - Pin 2: Next Tab (Ctrl+Tab)
-   - Pin 3: New Tab (Ctrl+N)
-   - Pin 4: Previous Tab (Ctrl+Shift+Tab)
-
-   For Mac:
-   Use pins 5-7 for tab management:
-   - Pin 5: Next Tab (Cmd+Option+right arrow)
-   - Pin 6: New Tab (Cmd+N)
-   - Pin 7: Previous Tab (Cmd+Option+left arrow)
-
-   Common Controls (Both Platforms):
-   - Pin 8: Enter
-   - Pin 9: Space
-   - Pin 10: Down Arrow
-   - Pin 11: Up Arrow
-   - Pin 12: Page Down
-   - Pin 13: Page Up
-   - Pin A0: Open df.show
-   - Pin A1: Open ocadu.ca
-*/

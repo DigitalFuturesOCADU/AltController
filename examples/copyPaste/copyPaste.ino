@@ -3,13 +3,13 @@
   
   Cross-platform text editing controller with Windows/Mac support:
   
-  Windows Controls (Pins 2-5):
+  Windows Controls (Pins 0-3):
   - Select All (Ctrl+A)
   - Copy (Ctrl+C)
   - Paste (Ctrl+V)
   - Paste in Place (Shift+Insert)
   
-  Mac Controls (Pins 6-9):
+  Mac Controls (Pins 4-7):
   - Select All (Cmd+A)
   - Copy (Cmd+C)
   - Paste (Cmd+V)
@@ -29,22 +29,22 @@
 #include <AltController.h>
 
 // Windows pin assignments
-const int WIN_SELECT_ALL_PIN = 2;
-const int WIN_COPY_PIN = 3;
-const int WIN_PASTE_PIN = 4;
-const int WIN_PASTE_PLACE_PIN = 5;
+const int WIN_SELECT_ALL_PIN = 0;
+const int WIN_COPY_PIN = 1;
+const int WIN_PASTE_PIN = 2;
+const int WIN_PASTE_PLACE_PIN = 3;
 
 // Mac pin assignments
-const int MAC_SELECT_ALL_PIN = 6;
-const int MAC_COPY_PIN = 7;
-const int MAC_PASTE_PIN = 8;
-const int MAC_PASTE_PLACE_PIN = 9;
+const int MAC_SELECT_ALL_PIN = 4;
+const int MAC_COPY_PIN = 5;
+const int MAC_PASTE_PIN = 6;
+const int MAC_PASTE_PLACE_PIN = 7;
 
 // Common navigation pins
-const int ENTER_PIN = 10;
-const int TAB_PIN = 11;
-const int BACKSPACE_PIN = 12;
-const int SPACE_PIN = 13;
+const int ENTER_PIN = 8;
+const int TAB_PIN = 9;
+const int BACKSPACE_PIN = 10;
+const int SPACE_PIN = 11;
 
 // Timing configuration (in milliseconds)
 const int MACRO_TIME = 100;    // Longer time for macros
