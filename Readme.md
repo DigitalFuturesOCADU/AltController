@@ -17,6 +17,7 @@ Arduino library for creating custom keyboard controllers. Build custom shortcut 
     - [Copy/Paste Panel](#2-copypaste-panel)
     - [Web Browser Control](#3-web-browser-control)
     - [Photoshop Shortcuts](#4-photoshop-shortcuts)
+    - [The Shining](#5-the-shining)
 - [Key Reference](#key-reference)
     - [Modifier Keys](#modifier-keys)
     - [Special Keys](#special-keys)
@@ -233,6 +234,7 @@ On Windows the sequence is
     controller.addMacro(MAC_NEW_DOC_PIN, {KEY_LEFT_GUI, 'n'}, MACRO_TIME);   // Mac: Cmd+N
 
 ```
+### 5. The Shining
 [This example allows you to re-enact this scene from The Shining](https://www.youtube.com/watch?v=4lQ_MjU4QHw)
 
 On Mac the sequence is
