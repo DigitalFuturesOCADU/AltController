@@ -1,6 +1,6 @@
 # AltController Library
 
-The AltController library simplifies the creation of custom keyboard inputs for Arduino by creating a wrapper for the Keyboard library.
+The AltController library simplifies the creation of custom keyboard inputs for Arduino by creating a wrapper for the [Keyboard](https://docs.arduino.cc/language-reference/en/functions/usb/Keyboard/) library.
  It allows the simple creation of different types of inputs that can be polled at different rates.
 
 - Keypress continuously sends the letter/button as if the key is held down
