@@ -1,6 +1,12 @@
 # AltController Library
 
-Arduino library for creating custom keyboard controllers. Build custom shortcut panels, gaming controllers, or macro boards using simple buttons with internal pullup resistors.
+The AltController library simplifies the creation of custom keyboard inputs for Arduino by creating a wrapper for the Keyboard library.
+ It allows the simple creation of different types of inputs that can be polled at different rates.
+
+- Keypress continuously sends the letter/button as if the key is held down
+- KeyReleasse sends the letter/button once when the connection has been made then released
+- Macro sends combinations of keys from a single pin simliar to KeyReleasse
+- Print types words or phrases using the KeyReleasse behavior
 
 ## Table of Contents
 - [Installation](#installation)
