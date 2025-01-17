@@ -19,7 +19,7 @@ The AltController library simplifies the creation of custom keyboard inputs for 
     - [addPrint](#addprintpin-text-sensitivity)
 - [Example Projects](#example-projects)
     - [Uploading Example Projects](#uploading-example-projects)
-    - [Gaming Controller](#1-gaming-controller)
+    - [Simple Controller](#1-simple-controller)
     - [Copy/Paste Panel](#2-copypaste-panel)
     - [Web Browser Control](#3-web-browser-control)
     - [Photoshop Shortcuts](#4-photoshop-shortcuts)
@@ -121,7 +121,7 @@ Uploading Keyboard Emulation code to an Arduino is slightly different that typic
 2. Select the Arduino from the device list in the IDE. This is required because it has a different serial port than when it is acting as a keyboard.
 3. Upload the code.
 
-### 1. Gaming Controller
+### 1. Simple Controller
 This example provides typical key inputs for game controls : W,A,S,D + Arrow Keys + Spacebar + Enter
 
 Connect wires the the corresponding pins + Gnd and test with existing games. Works for both Mac & PC
